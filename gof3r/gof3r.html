@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Tue Jul 22 20:44:18 2014 -->
+<!-- CreationDate: Wed Aug 13 13:13:35 2014 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,16 +14,6 @@
 </style>
 <title>gof3r</title>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-53029243-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
 <body>
 
@@ -70,6 +60,11 @@ streaming, concurrent s3 client</p>
 <p style="margin-left:22%;">Create gof3r.man man page in
 current directory</p>
 
+<p style="margin-left:11%;"><b>-i, --writeini</b></p>
+
+<p style="margin-left:22%;">Write .gof3r.ini in current
+user&rsquo;s home directory</p>
+
 <p style="margin-left:11%;"><b>-h, --help</b></p>
 
 <p style="margin-left:22%;">Show this help message</p>
@@ -93,21 +88,24 @@ gof3r [OPTIONS] cp &lt;source&gt; &lt;dest&gt;
 copy <b><br>
 --no-ssl</b></p>
 
-<p style="margin-left:22%;">do not use SSL for endpoint
+<p style="margin-left:22%;">Do not use SSL for endpoint
 connection.</p>
 
 <p style="margin-left:11%;"><b>--no-md5</b></p>
 
 <p style="margin-left:22%;">Do not use md5 hash checking to
-ensure data integrity.</p>
+ensure data integrity. By default, the md5 hash of is
+calculated concurrently during puts, stored at
+&lt;bucket&gt;.md5/&lt;key&gt;.md5, and verified on
+gets.</p>
 
 <p style="margin-left:11%;"><b>-c, --concurrency</b></p>
 
-<p style="margin-left:22%;">concurrency of transfers</p>
+<p style="margin-left:22%;">Concurrency of transfers</p>
 
 <p style="margin-left:11%;"><b>-s, --partsize</b></p>
 
-<p style="margin-left:22%;">initial size of concurrent
+<p style="margin-left:22%;">Initial size of concurrent
 parts, in bytes</p>
 
 <p style="margin-left:11%;"><b>--endpoint</b></p>
@@ -116,11 +114,12 @@ parts, in bytes</p>
 
 <p style="margin-left:11%;"><b>--debug</b></p>
 
-<p style="margin-left:22%;">enable debug logging.</p>
+<p style="margin-left:22%;">Enable debug logging.</p>
 
 <p style="margin-left:11%;"><b>-m, --header</b></p>
 
-<p style="margin-left:22%;">HTTP headers</p>
+<p style="margin-left:22%;">HTTP headers. May be used to
+set custom metadata, server-side encryption etc.</p>
 
 <p style="margin-left:11%;"><b>-h, --help</b></p>
 
@@ -134,18 +133,18 @@ object from S3</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Usage</b>:
 gof3r [OPTIONS] get [get-OPTIONS] <b><br>
--p, --path</b></p>
-
-<p style="margin-left:22%;">Path to file. Defaults to
-standard output for streaming.</p>
-
-<p style="margin-left:11%;"><b>-k, --key</b></p>
+-k, --key</b></p>
 
 <p style="margin-left:22%;">S3 object key</p>
 
 <p style="margin-left:11%;"><b>-b, --bucket</b></p>
 
 <p style="margin-left:22%;">S3 bucket</p>
+
+<p style="margin-left:11%;"><b>-p, --path</b></p>
+
+<p style="margin-left:22%;">Path to file. Defaults to
+standard output for streaming.</p>
 
 <p style="margin-left:11%;"><b>--no-ssl</b></p>
 
@@ -194,18 +193,18 @@ data to S3 object</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Usage</b>:
 gof3r [OPTIONS] put [put-OPTIONS] <b><br>
--p, --path</b></p>
-
-<p style="margin-left:22%;">Path to file. Defaults to
-standard input for streaming.</p>
-
-<p style="margin-left:11%;"><b>-k, --key</b></p>
+-k, --key</b></p>
 
 <p style="margin-left:22%;">S3 object key</p>
 
 <p style="margin-left:11%;"><b>-b, --bucket</b></p>
 
 <p style="margin-left:22%;">S3 bucket</p>
+
+<p style="margin-left:11%;"><b>-p, --path</b></p>
+
+<p style="margin-left:22%;">Path to file. Defaults to
+standard output for streaming.</p>
 
 <p style="margin-left:11%;"><b>--no-ssl</b></p>
 
@@ -239,7 +238,8 @@ parts, in bytes</p>
 
 <p style="margin-left:11%;"><b>-m, --header</b></p>
 
-<p style="margin-left:22%;">HTTP headers</p>
+<p style="margin-left:22%;">HTTP headers. May be used to
+set custom metadata, server-side encryption etc.</p>
 
 <p style="margin-left:11%;"><b>-h, --help</b></p>
 
